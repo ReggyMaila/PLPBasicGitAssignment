@@ -1,0 +1,89 @@
+
+//Assignment 1: Design Your Own Class
+
+# Base class: Smartphone
+class Smartphone:
+    def __init__(self, brand, model, battery_life):
+        self.brand = brand
+        self.model = model
+        self.battery_life = battery_life  # in hours
+
+    def show_details(self):
+        return f"Brand: {self.brand}, Model: {self.model}, Battery Life: {self.battery_life} hours"
+
+    def make_call(self, number):
+        return f"Calling {number} from {self.model}..."
+
+# Subclass: GamingPhone (inherits from Smartphone)
+class GamingPhone(Smartphone):
+    def __init__(self, brand, model, battery_life, cooling_system, refresh_rate):
+        super().__init__(brand, model, battery_life)
+        self.cooling_system = cooling_system
+        self.refresh_rate = refresh_rate  # in Hz
+
+    def show_details(self):
+        return f"{super().show_details()}, Cooling: {self.cooling_system}, Refresh Rate: {self.refresh_rate}Hz"
+
+    def start_game_mode(self):
+        return f"{self.model} is now in Gaming Mode with {self.refresh_rate}Hz refresh rate!"
+
+# Creating objects
+phone1 = Smartphone("Apple", "iPhone 14", 20)
+gaming_phone1 = GamingPhone("Asus", "ROG Phone 6", 18, "Advanced Vapor Chamber", 165)
+
+# Output
+print(phone1.show_details())  
+print(gaming_phone1.show_details())  
+print(gaming_phone1.start_game_mode())  
+print(phone1.make_call("123-456-7890"))  
+
+
+Activity 2: Polymorphism Challenge
+
+
+# Base class: Animal
+class Animal:
+    def move(self):
+        pass  # Placeholder for subclasses
+
+# Subclasses: Different types of animals
+class Bird(Animal):
+    def move(self):
+        return "Flying in the sky! 🦅"
+
+class Fish(Animal):
+    def move(self):
+        return "Swimming in the water! 🐟"
+
+class Cheetah(Animal):
+    def move(self):
+        return "Running at lightning speed! 🏃‍♂️"
+
+# Base class: Vehicle
+class Vehicle:
+    def move(self):
+        pass  # Placeholder for subclasses
+
+# Subclasses: Different vehicles
+class Car(Vehicle):
+    def move(self):
+        return "Driving on the road! 🚗"
+
+class Plane(Vehicle):
+    def move(self):
+        return "Flying in the air! ✈️"
+
+class Boat(Vehicle):
+    def move(self):
+        return "Sailing on the water! ⛵"
+
+# Testing polymorphism
+animals = [Bird(), Fish(), Cheetah()]
+vehicles = [Car(), Plane(), Boat()]
+
+for animal in animals:
+    print(animal.move())
+
+for vehicle in vehicles:
+    print(vehicle.move())
+
